@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+
+body {
+    background-color: #5e5e5e;
+}
+
+.center {
+    text-align: center;
+}
+
+.main {
+    font-family: "Fira Code";
+    color: #000000;
+}
+
+a {
+    color: #000000;
+}
+
+a.generated {
+    color: #00ff00;
+}

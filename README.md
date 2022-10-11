@@ -1,5 +1,6 @@
 ### Downscaler
 An efficient image downscaler completely on device.
+https://guacaplushy.github.io/Downscaler/
 
 # How fast is it?
 Well, it depends on the image and your CPU.

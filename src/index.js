@@ -107,7 +107,7 @@ async function downscaleImg(image2Down) {
                 blockColors = [];
             blockPixels.forEach(pos => {
                 let pixelPos = (pos.y + 1) * (resolution.width * 4) + pos.x * 4;
-                blockColors.push(new RGBA(loadedData[pixelPos], loadedData[pixelPos + 1], loadedData[pixelPos + 2], loadedData[pixelPos + 3]))
+                blockColors.push(new RGBA(loadedData[pixelPos], loadedData[pixelPos + 1], loadedData[pixelPos + 2], loadedData[pixelPos + 3]));
             });
             blocks.push(new Block(new Coord(x, y), computeBlockColor(blockColors)));
         }
@@ -163,7 +163,7 @@ async function downscaleMain(image2Down) {
         outputBlocks[arrayPos + 1] = blockColor.g;
         outputBlocks[arrayPos + 2] = blockColor.b;
         outputBlocks[arrayPos + 3] = blockColor.a;
-    })                                                       
+    });
     downScaledCTX.putImageData(new _ImageData(new Uint8ClampedArray(outputBlocks), outWidth, blockMap.height), 0, 0);
     saveFile(downScaledCanvas);
 }
@@ -184,7 +184,7 @@ async function downscale() {
                 if (image.src != "") {
                     clearInterval(srcChecker);
                     downscaleMain(image);
-                }
+                };
             }, 50);
         });
     }

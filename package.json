@@ -1,0 +1,12 @@
+{
+  "name": "downscaler",
+  "version": "1.0.0",
+  "description": "efficient image downscaler for node/the web",
+  "main": "src/index.js",
+  "type": "module",
+  "author": "Guacaplushy",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.10.1"
+  }
+}

@@ -1,4 +1,5 @@
 let isNode = typeof window === "undefined";
+let startTime;
 
 class Resolution {
     constructor(w, h) {
@@ -120,7 +121,10 @@ async function saveFile(downScaledCanvas) {
         const downscaledImg = fs.createWriteStream("downscaled.png"),
             downscaledStream = downScaledCanvas.createPNGStream();
         downscaledStream.pipe(downscaledImg);
-        downscaledImg.on("finish", () => downscaledImg.close());
+        downscaledImg.on("finish", () => {
+            downscaledImg.close();
+            console.log(`Successfully downscaled in ${((Date.now() - startTime) / 1000).toFixed(2)} seconds!`);
+        });
     } else {
         await downScaledCanvas.toBlob(blob => {
             let blobURL = URL.createObjectURL(blob),
@@ -132,7 +136,7 @@ async function saveFile(downScaledCanvas) {
             }
             else {
                 open(blobURL);
-                linkElem.innerHTML = "Opened link in new tab!";
+                linkElem.innerHTML = `Opened link in new tab! Took ${((Date.now() - startTime) / 1000).toFixed(2)} seconds to downscale.`;
             }
         }, "image/png", 1);
     }
@@ -168,6 +172,7 @@ async function downscaleMain(image2Down) {
 }
 
 async function downscale() {
+    startTime = Date.now();
     if (isNode) {
         let canvas = await import("canvas"),
             fs = await import("fs");
